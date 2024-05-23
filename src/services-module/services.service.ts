@@ -7,7 +7,9 @@ export class ServicesService {
   constructor(private readonly db: PrismaService) {}
 
   public async create(dto: CreateServiceDto) {
-    const service = this.db.services.findFirst({ where: { name: dto.name } });
+    const service = await this.db.services.findFirst({
+      where: { title: dto.title },
+    });
 
     if (service) {
       throw new HttpException('Такой курс уже существует', HttpStatus.CONFLICT);
@@ -39,6 +41,6 @@ export class ServicesService {
   }
 
   public async getAll() {
-    return this.db.services.findMany();
+    return this.db.services.findMany({ include: { userServices: true } });
   }
 }

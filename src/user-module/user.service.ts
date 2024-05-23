@@ -59,4 +59,8 @@ export class UserService {
   getAllUsers() {
     return this.db.user.findMany();
   }
+
+  async delete(id: number) {
+    await this.db.user.delete({ where: { id: id } });
+  }
 }

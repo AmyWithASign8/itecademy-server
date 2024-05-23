@@ -2,7 +2,10 @@ import { IsNumber, IsString } from 'class-validator';
 
 export class CreateServiceDto {
   @IsString()
-  name: string;
+  title: string;
+
+  @IsString()
+  description: string;
 }
 
 export class SubscribeServiceDto {
