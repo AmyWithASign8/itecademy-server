@@ -15,3 +15,14 @@ export class SubscribeServiceDto {
   @IsNumber()
   serviceId: number;
 }
+
+export class EditServiceDto {
+  @IsNumber()
+  id: number;
+
+  @IsString()
+  title: string;
+
+  @IsString()
+  description: string;
+}

@@ -1,6 +1,10 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { CreateServiceDto, SubscribeServiceDto } from './services.dto';
+import {
+  CreateServiceDto,
+  EditServiceDto,
+  SubscribeServiceDto,
+} from './services.dto';
 
 @Injectable()
 export class ServicesService {
@@ -42,5 +46,15 @@ export class ServicesService {
 
   public async getAll() {
     return this.db.services.findMany({ include: { userServices: true } });
+  }
+
+  public async edit(dto: EditServiceDto) {
+    await this.db.services.update({ where: { id: dto.id }, data: dto });
+    return;
+  }
+
+  public async delete(id: number) {
+    await this.db.services.delete({ where: { id } });
+    return;
   }
 }

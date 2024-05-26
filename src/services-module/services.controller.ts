@@ -1,5 +1,9 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
-import { CreateServiceDto, SubscribeServiceDto } from './services.dto';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import {
+  CreateServiceDto,
+  EditServiceDto,
+  SubscribeServiceDto,
+} from './services.dto';
 import { ServicesService } from './services.service';
 
 @Controller('services')
@@ -19,5 +23,15 @@ export class ServicesController {
   @Get('all')
   async getAllServices() {
     return this.service.getAll();
+  }
+
+  @Post('update')
+  async update(@Body() dto: EditServiceDto) {
+    await this.service.edit(dto);
+  }
+
+  @Delete('delete::id')
+  async delete(@Param() params: { id: number }) {
+    await this.service.delete(Number(params.id));
   }
 }
