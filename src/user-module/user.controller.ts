@@ -2,6 +2,7 @@ import {
   Body,
   Controller,
   Delete,
+  Get,
   HttpCode,
   HttpStatus,
   Param,
@@ -29,5 +30,10 @@ export class UserController {
   @Delete('delete::id')
   async deleteUser(@Param() params: { id: number }) {
     await this.userService.delete(Number(params.id));
+  }
+
+  @Get()
+  async getAll() {
+    return await this.userService.getAllUsers();
   }
 }
