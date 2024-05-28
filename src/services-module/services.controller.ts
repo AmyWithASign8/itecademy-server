@@ -34,4 +34,9 @@ export class ServicesController {
   async delete(@Param() params: { id: number }) {
     await this.service.delete(Number(params.id));
   }
+
+  @Delete('unsubscribe::id')
+  async unsubscribe(@Param() params: { id: number }) {
+    await this.service.unsubscribe(Number(params.id));
+  }
 }

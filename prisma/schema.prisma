@@ -21,14 +21,16 @@ model User {
   servicesId Int?    @map("services_id")
 
   userServices UserServices[]
+  review       Review[]
 
   @@map("user")
 }
 
 model Services {
-  id          Int    @id @default(autoincrement())
-  title       String @db.VarChar(255)
-  description String @db.Text
+  id          Int     @id @default(autoincrement())
+  title       String  @db.VarChar(255)
+  description String  @db.Text
+  videoLink   String? @map("video_link") @db.VarChar(255)
 
   userServices UserServices[]
 
@@ -44,4 +46,12 @@ model UserServices {
   service Services @relation(references: [id], fields: [serviceId], onDelete: Cascade, onUpdate: Cascade)
 
   @@map("user_services")
+}
+
+model Review {
+  id     Int    @id @default(autoincrement())
+  review String @db.Text
+
+  userId Int  @map("user_id") @db.Integer
+  user   User @relation(references: [id], fields: [userId], onDelete: Cascade, onUpdate: Cascade)
 }

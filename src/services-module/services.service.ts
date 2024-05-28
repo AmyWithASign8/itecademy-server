@@ -57,4 +57,8 @@ export class ServicesService {
     await this.db.services.delete({ where: { id } });
     return;
   }
+
+  public async unsubscribe(id: number) {
+    await this.db.userServices.delete({ where: { id } });
+  }
 }

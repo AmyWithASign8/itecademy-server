@@ -6,6 +6,9 @@ export class CreateServiceDto {
 
   @IsString()
   description: string;
+
+  @IsString()
+  videoLink: string;
 }
 
 export class SubscribeServiceDto {
@@ -25,4 +28,7 @@ export class EditServiceDto {
 
   @IsString()
   description: string;
+
+  @IsString()
+  videoLink: string;
 }
