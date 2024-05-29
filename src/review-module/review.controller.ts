@@ -13,7 +13,7 @@ export class ReviewController {
     return review;
   }
 
-  @Delete('delete')
+  @Delete('delete::id')
   public async deleteReview(@Param() params: { id: number }) {
     await this.service.delete(Number(params.id));
   }

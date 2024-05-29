@@ -12,8 +12,9 @@ export class ReviewService {
     return review;
   }
 
-  public delete(id: number) {
-    this.db.review.delete({ where: { id } });
+  public async delete(id: number) {
+    await this.db.review.delete({ where: { id } });
+    return;
   }
 
   public getAll() {
