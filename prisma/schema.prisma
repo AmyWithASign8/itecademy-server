@@ -30,6 +30,7 @@ model Services {
   id          Int     @id @default(autoincrement())
   title       String  @db.VarChar(255)
   description String  @db.Text
+  teacher     String? @db.VarChar(255)
   videoLink   String? @map("video_link") @db.VarChar(255)
 
   userServices UserServices[]

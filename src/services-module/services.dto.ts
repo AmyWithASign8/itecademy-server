@@ -8,6 +8,9 @@ export class CreateServiceDto {
   description: string;
 
   @IsString()
+  teacher: string;
+
+  @IsString()
   videoLink: string;
 }
 
@@ -28,6 +31,9 @@ export class EditServiceDto {
 
   @IsString()
   description: string;
+
+  @IsString()
+  teacher: string;
 
   @IsString()
   videoLink: string;

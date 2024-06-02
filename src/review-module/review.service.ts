@@ -18,6 +18,9 @@ export class ReviewService {
   }
 
   public getAll() {
-    return this.db.review.findMany({ include: { user: true } });
+    return this.db.review.findMany({
+      include: { user: true },
+      orderBy: { id: 'desc' },
+    });
   }
 }
