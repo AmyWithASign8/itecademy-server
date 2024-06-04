@@ -50,8 +50,9 @@ model UserServices {
 }
 
 model Review {
-  id     Int    @id @default(autoincrement())
-  review String @db.Text
+  id        Int      @id @default(autoincrement())
+  review    String   @db.Text
+  createdAt DateTime @default(now()) @db.Timestamp()
 
   userId Int  @map("user_id") @db.Integer
   user   User @relation(references: [id], fields: [userId], onDelete: Cascade, onUpdate: Cascade)
